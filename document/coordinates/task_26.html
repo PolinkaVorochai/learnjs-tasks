@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.onclick = function (e) { // показывает координаты точки клика
+            coords.innerHTML = e.clientX + ':' + e.clientY;
+        };
+    </script>
+</head>
+
+<body>
+    <div class="triangle-right" style="left:-20px;top:-176px">1</div>
+    <div class="triangle-right" style="left:-10px;top:-178px">3</div>
+    <div class="triangle-right" style="left:190px;top:-40px">4</div>
+    <div class="triangle-right" style="left:200px;top:-42px">2</div>
+    <script>
+        let fieldCoords = field.getBoundingClientRect();
+
+        let answer = [
+            [ // 1
+                fieldCoords.left,
+                fieldCoords.top
+            ],
+            [ // 2
+                fieldCoords.right,
+                fieldCoords.bottom
+            ],
+            [ // 3
+                fieldCoords.left + field.clientLeft,
+                fieldCoords.top + field.clientTop
+            ],
+            [ // 4
+                fieldCoords.left + field.clientLeft + field.clientWidth,
+                fieldCoords.top + field.clientTop + field.clientHeight
+            ]
+        ];
+
+        alert(answer.join('  '));
+    </script>
+</body>
+
+</html>
+
+<!--Найдите координаты точек относительно окна браузера-->
